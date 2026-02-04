@@ -26,7 +26,6 @@ let gameLoop = setInterval(() => {
         score++;
         document.getElementById('score-val').innerText = score;
         
-        // Trigger Boss Battle at Score 10
         if (score >= 10) {
             startBossBattle();
         }
@@ -34,10 +33,13 @@ let gameLoop = setInterval(() => {
         obstacle.style.left = (obsLeft - 5) + "px";
     }
 
-    // Collision Detection
+    // --- UPDATED COLLISION DETECTION ---
     if (obsLeft > 50 && obsLeft < 90 && playerBottom < 40) {
+        clearInterval(gameLoop); // 1. Stop the loop instantly
+        gameActive = false;      // 2. Prevent any other logic
+        
         alert("Oops! Try again for love!");
-        location.reload();
+        location.reload();       // 3. Now it will reload properly
     }
 }, 20);
 
