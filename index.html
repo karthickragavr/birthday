@@ -3,59 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday ❤️</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Dino Jump❤️</title>
+  <link rel="stylesheet" href="game.css">
 </head>
 <body>
+<div id="game-world">
+    <div id="status">Score: <span id="score-val">0</span></div>
+    
+    <!-- The Player -->
+    <div id="player">🦖</div>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+    <!-- The Obstacle -->
+    <div id="obstacle">🌵</div>
 
-<div class="card" id="card">
+    <!-- The Boss (Hidden initially) -->
+    <div id="boss" style="display: none;">💖</div>
 
-  <!-- 🔐 Password Unlock -->
-  <div id="lock">
-    <h1>🔐 Secret Surprise</h1>
-    <p>Enter our special word 💕</p>
-    <input id="password" placeholder="Hint: our nickname" />
-    <br><br>
-    <button onclick="unlock()">Unlock</button>
-    <p class="footer">Click <a href="loveletter.html">here</a> to find out why I love you.</p>
-  </div>
-
-  <!-- Main Content -->
-  <div id="content" class="hidden">
-    <h1>Happy Birthday, <span id="name">Pookie</span> 🎉❤️</h1>
-    <!-- Image 
-    <img src="photo.jpg" class="photo" />
-    -->
-    <h2>You make my world brighter every day</h2>
-
-    <!-- Typing message -->
-    <div class="typing" id="typing"></div>
-
-    <p><strong>Will you be my Valentine? 💘</strong></p>
-
-    <div class="buttons" id="buttons">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No 🙈</button>
+    <!-- The Final Letter (Hidden initially) -->
+    <div id="letter" class="hidden">
+        <h2>You Won My Heart!</h2>
+        <p id="daily-message"></p>
+        <p class="footer">Click <a href="birthday.html">here</a> to view your Secret Message.</p>
     </div>
-
-    <!-- WhatsApp style message -->
-    <div id="chat" class="chat hidden">
-      Yayyy!! I was hoping you'd say YES 🥰❤️
-    </div>
-
-    <!-- Final Reveal -->
-    <div id="final" class="hidden">
-      <p><strong>Date Night 🌹</strong></p>
-      <p>Dinner at our favorite place 🍽️</p>
-      <p>Feb 14, Saturday at 7:30 PM 🕯️</p>
-      <div class="countdown" id="countdown"></div>
-    </div>
-  </div>
 </div>
-<script src="script.js"></script>
+<script src="game.js"></script>
 </body>
 </html>
