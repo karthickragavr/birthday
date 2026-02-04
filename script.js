@@ -1,5 +1,5 @@
 const secret = "pookie"; // CHANGE THIS
-  const message = "On your special day, I just want to remind you how much you mean to me. You're my best friend, my partner, and my forever. From our late-night talks to our silly inside jokes, every moment with you is my favorite.";
+  const message = "On your special day, I just want to remind you how much you mean to me. You're my best friend, my partner, and my forever. From our late-night talks to our silly inside jokes, every moment with you is my favorite. Love you, my penqueen!";
   const typingEl = document.getElementById('typing');
   const yesBtn = document.getElementById('yesBtn');
   const noBtn = document.getElementById('noBtn');
