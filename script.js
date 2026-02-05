@@ -1,5 +1,5 @@
 const secret = "pookie"; // CHANGE THIS
-  const message = "On your special day, I just want to remind you how much you mean to me. You're my best friend, my partner, and my forever. From our late-night talks to our silly inside jokes, every moment with you is my favorite. Love you, my penqueen!";
+  var message = "On your special day, I just want to remind you how much you mean to me. You're my best friend, my partner, and my forever. From our late-night talks to our silly inside jokes, every moment with you is my favorite. Love you, my penqueen!";
   const typingEl = document.getElementById('typing');
   const yesBtn = document.getElementById('yesBtn');
   const noBtn = document.getElementById('noBtn');
@@ -9,11 +9,30 @@ const secret = "pookie"; // CHANGE THIS
     const input = document.getElementById('password').value
       .trim()
       .toLowerCase();
-
+    const today = new Date();
+    // Feb 9th is month 1, day 9 (zero-indexed months)
+    const isFeb9 = today.getMonth() === 1 && today.getDate() === 9;
+    // Feb 6th is month 1, day 9 (zero-indexed months)
+    const isFeb6 = today.getMonth() === 1 && today.getDate() === 6;
     if (input === secret.toLowerCase()) {
-      document.getElementById('lock').classList.add('hidden');
-      document.getElementById('content').classList.remove('hidden');
-      typeMessage();
+      
+      if (isFeb9){
+        document.getElementById('lock').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+        typeMessage();
+      }
+      else if(isFeb6){
+        document.getElementById('lock').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+        message = "Happy Star Birthday!! On your star birthday, I just want to remind you how much you mean to me. You're my sun, my moon, and my stars. Every moment with you is my a blessed moment. Love you, my darling!";
+        typeMessage();
+      }else{
+        document.getElementById('lock').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+        message = "I know its not your birthday yet, I just want to remind you how much you mean to me. You're my everthng. Every moment with you is a dream come true. Come back on your birthday. Love you, my pookie!";
+        typeMessage();
+      }
+      
     } else {
       alert('Oops 😜 try again');
     }
@@ -45,15 +64,52 @@ const secret = "pookie"; // CHANGE THIS
     noBtn.style.color = '#333';
     noBtn.style.transform = 'scale(1)';
   }
+// 🔥 🔥🔥 // 🎭 TRICK BUTTON MODE (Playful + Clean)
+let trickStep = 0;
+const trickTexts = [
+  'No 🙈',
+  'Maybe 🤔',
+  'Are you sure? 😳',
+  'Okay fine… 🥲',
+  'Yes 💕'
+];
 
+// 🔊 Panic sound (plays on every No click)
+const panicSound = new Audio('panic.mp3');
+panicSound.volume = 0.4;
+// 🔊 yay sound (plays on every No click)
+const yaySound = new Audio('yay.mp3');
+yaySound.volume = 0.4;
+
+function handleNoClick(e) {
+  e.preventDefault();
+
+  trickStep++;
+
+  if (trickStep < trickTexts.length - 1) {
+    panicSound.currentTime = 0;
+    panicSound.play().catch(() => {});
+    noBtn.textContent = trickTexts[trickStep];
+    noBtn.classList.add('shake');
+    setTimeout(() => noBtn.classList.remove('shake'), 300);
+  } else {
+    yaySound.currentTime = 0;
+    yaySound.play().catch(() => {});
+    morphToYes();
+    noBtn.onclick = () => yesBtn.click();
+  }
+}
+
+  noBtn.addEventListener('click', handleNoClick);
+/*
+  // Clicking No triggers Yes action
   noBtn.addEventListener('mouseover', morphToYes);
   noBtn.addEventListener('mouseout', resetNo);
-
-  // Clicking No triggers Yes action
+  
   noBtn.addEventListener('click', () => {
     yesBtn.click();
   });
-
+*/
   yesBtn.addEventListener('click', () => {
     document.getElementById('buttons').classList.add('hidden');
     document.getElementById('chat').classList.remove('hidden');
