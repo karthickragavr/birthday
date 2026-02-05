@@ -115,14 +115,43 @@
 }
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7); display: flex;
-    justify-content: center; align-items: center; z-index: 2000;
+    background: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 2000;
     pointer-events: all; /* Ensure modal itself stays clickable */
 }
 .modal-box {
-    background: white; padding: 30px; border-radius: 20px;
-    text-align: center; max-width: 85%; border: 3px solid #ff4081;
+    background: white; 
+    padding: 30px; 
+    border-radius: 20px;
+    text-align: center; 
+    max-width: 85%; 
+    border: 3px solid #ff4081;
 }
+#countdown-overlay {
+    /* Existing flex styles... */
+    display: none;          /* Controlled by JS */
+    position: fixed;        /* Use fixed to cover the entire browser window */
+    top: 0;
+    left: 0;
+    width: 100vw;           /* Explicitly set 100% of viewport width */
+    height: 100vh;          /* Explicitly set 100% of viewport height */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    z-index: 3000;          /* Highest possible layer to beat the game world */
+    justify-content: center;
+    align-items: center;
+    pointer-events: all;    /* Ensures it captures clicks if necessary */
+}
+
+#countdown-text {
+    font-size: 120px;       /* Bigger for desktop visibility */
+    color: #ff4081;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Pop against background */
+}
+
 /* Prevent scrolling when modal is open */
 body.no-scroll { overflow: hidden; height: 100%; }
 /* When modal is open, disable background clicks */
